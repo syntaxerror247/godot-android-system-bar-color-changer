@@ -5,6 +5,7 @@ class_name SystemBarColorChanger extends Node
 
 const _plugin_name: String = "SystemBarColorChanger"
 var lightStatusBar: bool = false
+var lightNavigationBar: bool = false
 
 var _plugin_singleton: Object
 
@@ -22,7 +23,7 @@ func set_status_bar_color(color: Color):
 
 func set_navigation_bar_color(color: Color):
 	if _plugin_singleton:
-		_plugin_singleton.setNavBarColor(change_color_format(color))
+		_plugin_singleton.setNavBarColor(change_color_format(color),lightNavigationBar)
 	else:
 		printerr("%s singleton not found!" % _plugin_name)
 

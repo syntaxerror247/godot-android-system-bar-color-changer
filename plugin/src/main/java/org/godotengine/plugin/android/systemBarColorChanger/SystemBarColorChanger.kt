@@ -12,9 +12,12 @@ class SystemBarColorChanger(godot: Godot): GodotPlugin(godot) {
     override fun getPluginName() = BuildConfig.GODOT_PLUGIN_NAME
 
     @UsedByGodot
-    fun setNavBarColor(color: String) {
+    fun setNavBarColor(color: String, lightNavBar: Boolean) {
         runOnUiThread {
             activity?.window?.navigationBarColor = Color.parseColor(color)
+            val window = activity!!.window
+            val wic = WindowInsetsControllerCompat(window, window.decorView)
+            wic.isAppearanceLightNavigationBars = lightNavBar
         }
     }
 
@@ -22,14 +25,9 @@ class SystemBarColorChanger(godot: Godot): GodotPlugin(godot) {
     fun setStatusBarColor(color: String, lightStatusBar: Boolean) {
         runOnUiThread {
             activity?.window?.statusBarColor = Color.parseColor(color)
-            val currentTheme = activity!!.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-            when (currentTheme) {
-                Configuration.UI_MODE_NIGHT_NO -> {
-                    val window = activity!!.window
-                    val wic = WindowInsetsControllerCompat(window, window.decorView)
-                    wic.isAppearanceLightStatusBars = lightStatusBar
-                }
-            }
+            val window = activity!!.window
+            val wic = WindowInsetsControllerCompat(window, window.decorView)
+            wic.isAppearanceLightStatusBars = lightStatusBar
         }
     }
 }

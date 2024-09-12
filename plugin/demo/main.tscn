@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg3hylang5fxn"]
+[gd_scene load_steps=6 format=3 uid="uid://cg3hylang5fxn"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_j0gfq"]
 [ext_resource type="Script" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="2_wvwyx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwo12"]
 bg_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvfxw"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.0588235, 0.25098, 0.25098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vx7x"]
+content_margin_left = 30.0
+content_margin_right = 30.0
+bg_color = Color(0.0588235, 0.25098, 0.25098, 1)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -22,64 +32,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.827718, 0.828103, 1)
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -122.0
-offset_right = 140.0
-offset_bottom = -60.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Change Status Bar Color"
-
-[node name="Button2" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = 21.0
-offset_right = 140.0
-offset_bottom = 83.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Change Navigation Bar Color"
+color = Color(0, 0.473914, 0.474144, 1)
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
 script = ExtResource("2_wvwyx")
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -122.5
-offset_top = 92.0
-offset_right = 122.5
-offset_bottom = 161.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 71.0
+offset_right = -62.0
+offset_bottom = -76.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
 color = Color(0.594336, 0.58547, 0.868764, 1)
 
-[node name="Label" type="Label" parent="ColorPickerButton"]
+[node name="Label" type="Label" parent="VBoxContainer/ColorPickerButton"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -183.5
-offset_top = 15.0
-offset_right = 205.5
-offset_bottom = 51.0
+offset_left = -199.5
+offset_top = 4.0
+offset_right = 199.5
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_jwo12")
@@ -87,6 +73,35 @@ text = "Click On this ☝️ button to change color dynamically"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="light_status_bar" type="CheckButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tvfxw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vx7x")
+text = "LIght Status Bar"
+
+[node name="light_navigation_bar" type="CheckButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tvfxw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vx7x")
+text = "LIght Navigation Bar"
+
+[node name="status_bar_color" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Change Status Bar Color"
+
+[node name="navigation_bar_color" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Change Navigation Bar Color"
+
+[connection signal="color_changed" from="VBoxContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="toggled" from="VBoxContainer/light_status_bar" to="." method="_on_light_status_bar_toggled"]
+[connection signal="toggled" from="VBoxContainer/light_navigation_bar" to="." method="_on_light_navigation_bar_toggled"]
+[connection signal="pressed" from="VBoxContainer/status_bar_color" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/navigation_bar_color" to="." method="_on_button_2_pressed"]
