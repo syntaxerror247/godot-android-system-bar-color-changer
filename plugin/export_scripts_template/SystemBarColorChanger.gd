@@ -1,4 +1,6 @@
-# https://github.com/syntaxerror247
+#
+# © 2024-present https://github.com/syntaxerror247
+#
 
 @tool
 class_name SystemBarColorChanger extends Node

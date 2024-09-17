@@ -1,6 +1,5 @@
 package org.godotengine.plugin.android.systemBarColorChanger
 
-import android.content.res.Configuration
 import android.graphics.Color
 import androidx.core.view.WindowInsetsControllerCompat
 import org.godotengine.godot.Godot

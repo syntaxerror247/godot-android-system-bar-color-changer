@@ -34,6 +34,11 @@ Steps:
 ```
   $SystemBarColorChanger.lightStatusBar = true
 ```
+- If you want to have light navigation bar eg. WHITE
+```
+  $SystemBarColorChanger.lightNavigationBar = true
+```
+
 ---
 ## Demo Project
 ***You can try this plugin using demo project: [Demo Project](plugin/demo)***
