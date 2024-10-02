@@ -30,11 +30,11 @@ Steps:
 ```
   $SystemBarColorChanger.set_navigation_bar_color(color)
 ```
-- If you want to have light status bar eg. WHITE
+- If you want to have light status bar eg. WHITE (Note: You will have to call set_status_bar_color() to update changes)
 ```
   $SystemBarColorChanger.lightStatusBar = true
 ```
-- If you want to have light navigation bar eg. WHITE
+- If you want to have light navigation bar eg. WHITE (Note: You will have to call set_navigation_bar_color() to update changes)
 ```
   $SystemBarColorChanger.lightNavigationBar = true
 ```
