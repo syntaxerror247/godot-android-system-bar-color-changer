@@ -21,13 +21,19 @@ func set_status_bar_color(color: Color):
 	if _plugin_singleton:
 		_plugin_singleton.setStatusBarColor(change_color_format(color),lightStatusBar)
 	else:
-		printerr("%s singleton not found!" % _plugin_name)
+		printerr("%s plugin not initialized!" % _plugin_name)
 
 func set_navigation_bar_color(color: Color):
 	if _plugin_singleton:
 		_plugin_singleton.setNavBarColor(change_color_format(color),lightNavigationBar)
 	else:
-		printerr("%s singleton not found!" % _plugin_name)
+		printerr("%s plugin not initialized!" % _plugin_name)
+
+func set_translucent_system_bars(translucent = true):
+	if _plugin_singleton:
+		_plugin_singleton.setTranslucentSystemBars(translucent)
+	else:
+		printerr("%s plugin not initialized!" % _plugin_name)
 
 func change_color_format(color: Color):
 	# It changes color format to ARGB string

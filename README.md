@@ -1,3 +1,7 @@
+<p align="center">
+   <img width="200" src="plugin/demo/icon.png?raw=true" alt="plugin icon">
+</p>
+
 # Android System Bar Color Changer
 
 This Plugin enables to dynamically change the system bar colors (status bar and navigation bar) of your godot android app.
@@ -15,28 +19,32 @@ Steps:
 [Create Android gradle build](https://docs.godotengine.org/en/stable/tutorials/export/android_gradle_build.html)
 
 2. Turn off immersive_mode in Android exprot present (to make system bar visible)
-3. open themes.xml ```[project root]/android/build/res/values/themes.xml```
-   - add this in GodotAppMainTheme style
-   ```
-   <item name ="android:windowDrawsSystemBarBackgrounds">true</item>
-   ```
 
-4. Add `SystemBarColorChanger` node to your scene
-- To change status bar color
+3. Add `SystemBarColorChanger` node to your scene
+   - To change status bar color
+   ```
+     $SystemBarColorChanger.set_status_bar_color(color)
+   ```
+   - To change navigation bar color
+   ```
+     $SystemBarColorChanger.set_navigation_bar_color(color)
+   ```
+   - If you want to have light status bar eg. WHITE (Note: You will have to call set_status_bar_color() to update changes)
+   ```
+     $SystemBarColorChanger.lightStatusBar = true
+   ```
+   - If you want to have light navigation bar eg. WHITE (Note: You will have to call set_navigation_bar_color() to update changes)
+   ```
+     $SystemBarColorChanger.lightNavigationBar = true
+   ```
+4. Translucent System Bars
+- To enable translucent system bars
 ```
-  $SystemBarColorChanger.set_status_bar_color(color)
+   $SystemBarColorChanger.set_translucent_system_bars(true)
 ```
-- To change navigation bar color
+- To disable translucent system bars
 ```
-  $SystemBarColorChanger.set_navigation_bar_color(color)
-```
-- If you want to have light status bar eg. WHITE (Note: You will have to call set_status_bar_color() to update changes)
-```
-  $SystemBarColorChanger.lightStatusBar = true
-```
-- If you want to have light navigation bar eg. WHITE (Note: You will have to call set_navigation_bar_color() to update changes)
-```
-  $SystemBarColorChanger.lightNavigationBar = true
+   $SystemBarColorChanger.set_translucent_system_bars(false)
 ```
 
 ---
