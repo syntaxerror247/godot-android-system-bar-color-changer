@@ -38,14 +38,14 @@ Steps:
      $SystemBarColorChanger.lightNavigationBar = true
    ```
 4. Translucent System Bars
-- To enable translucent system bars
-```
-   $SystemBarColorChanger.set_translucent_system_bars(true)
-```
-- To disable translucent system bars
-```
-   $SystemBarColorChanger.set_translucent_system_bars(false)
-```
+   - To enable translucent system bars
+   ```
+      $SystemBarColorChanger.set_translucent_system_bars(true)
+   ```
+   - To disable translucent system bars
+   ```
+      $SystemBarColorChanger.set_translucent_system_bars(false)
+   ```
 
 ---
 ## Demo Project
